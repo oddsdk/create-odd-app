@@ -25,6 +25,7 @@ export type CWA_Command = CommandType & {
 
 let projectPath: string = '';
 
+// Begin the flow
 const program: CWA_Command = new Command(packageJson.name)
   .version(packageJson.version)
   .argument('[project-directory]')
@@ -116,6 +117,7 @@ const run = async (): Promise<void> => {
       authFlow,
       framework,
       packageManager,
+      // TODO: Add option of generating apps without typescript
       // typescript: program.typescript,
     })
   } catch (reason) {
@@ -123,23 +125,12 @@ const run = async (): Promise<void> => {
       throw reason
     }
 
-    // const res = await prompts({
-    //   type: 'confirm',
-    //   name: 'builtin',
-    //   message:
-    //     `Could not download '${example}' because of a connectivity issue between your machine and GitHub.\n` +
-    //     `Do you want to use the default template instead?`,
-    //   initial: true,
-    // })
-    // if (!res.builtin) {
-    //   throw reason
-    // }
-
     await createWebnativeApp({
       appPath: resolvedProjectPath,
       authFlow: AuthFlow.deviceLinking,
       framework: Framework.sveltekit,
       packageManager,
+      // TODO: Add option of generating apps without typescript
       // typescript: program.typescript,
     })
   }

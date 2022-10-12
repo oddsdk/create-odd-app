@@ -50,6 +50,11 @@ const Repos: ReposType = {
   },
 };
 
+/**
+ * Kick off the app creation using the selection options passed in by the user
+ *
+ * @param Options
+ */
 const createWebnativeApp = async ({
   appPath,
   authFlow,
@@ -126,6 +131,7 @@ const createWebnativeApp = async ({
   const isOnline = !useYarn || (await getOnline());
   const originalDirectory = process.cwd();
 
+  console.log();
   console.log(`Creating a new Webnative app in ${chalk.hex(PINK)(root)}.`);
   console.log();
 
@@ -165,7 +171,8 @@ const createWebnativeApp = async ({
 
     hasPackageJson = fs.existsSync(packageJsonPath);
     if (hasPackageJson) {
-      console.log("Installing packages. This might take a couple of minutes.");
+      console.log();
+      console.log("Installing packages. This might take a couple of minutes...");
       console.log();
 
       await install(root, null, { packageManager, isOnline });
