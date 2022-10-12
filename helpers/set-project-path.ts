@@ -3,7 +3,7 @@ import path from 'path'
 import prompts from 'prompts'
 
 import type { CWA_Command } from '../index'
-import { validateNpmName } from './validate-pkg'
+import validateNpmName from './validate-pkg'
 
 /**
  * If the projectPath hasn't been set, ask the user to set it

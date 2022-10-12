@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 import chalk from 'chalk'
-import { Command, type Command as CommandType } from "commander";
+import { Command, type Command as CommandType } from 'commander'
 import path from 'path'
 import checkForUpdate from 'update-check'
 
 import createWebnativeApp, { DownloadError } from './create-webnative-app'
-import { getPkgManager } from './helpers/get-pkg-manager'
-import { validateNpmName } from './helpers/validate-pkg'
+import getPkgManager from './helpers/get-pkg-manager'
+import validateNpmName from './helpers/validate-pkg'
 import setAuthFlow, { AuthFlow } from './helpers/set-auth-flow'
 import setFramework, { Framework } from './helpers/set-framework'
 import setProjectPath from './helpers/set-project-path'
@@ -79,7 +79,7 @@ const program: CWA_Command = new Command(packageJson.name)
   .allowUnknownOption()
   .parse(process.argv)
 
-async function run(): Promise<void> {
+const run = async (): Promise<void> => {
   // If the user hasn't explicitly set a project path, ask them to
   projectPath = await setProjectPath(projectPath, program)
 
@@ -147,7 +147,7 @@ async function run(): Promise<void> {
 
 const update = checkForUpdate(packageJson).catch(() => null)
 
-async function notifyUpdate(): Promise<void> {
+const notifyUpdate = async (): Promise<void> => {
   try {
     const res = await update
     if (res?.latest) {

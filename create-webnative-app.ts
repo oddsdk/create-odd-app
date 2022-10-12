@@ -1,21 +1,21 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import retry from 'async-retry'
 import chalk from 'chalk'
 import fs from 'fs'
 import path from 'path'
 
+import { PINK, PURPLE } from './helpers/colours'
+import makeDir from './helpers/make-dir'
 import {
+  tryGitInit,
   downloadAndExtractRepo,
   getRepoInfo,
   hasRepo,
   RepoInfo,
-} from './helpers/examples'
-import { makeDir } from './helpers/make-dir'
-import { tryGitInit } from './helpers/git'
-import { install } from './helpers/install'
-import { isFolderEmpty } from './helpers/is-folder-empty'
-import { getOnline } from './helpers/is-online'
-import { isWriteable } from './helpers/is-writeable'
+} from './helpers/git'
+import install from './helpers/install'
+import isFolderEmpty from './helpers/is-folder-empty'
+import getOnline from './helpers/is-online'
+import isWriteable from './helpers/is-writeable'
 import type { AuthFlow } from './helpers/set-auth-flow'
 import type { Framework } from './helpers/set-framework'
 import type { PackageManager } from './helpers/get-pkg-manager'
@@ -126,7 +126,7 @@ const createWebnativeApp = async ({
   const isOnline = !useYarn || (await getOnline());
   const originalDirectory = process.cwd();
 
-  console.log(`Creating a new Webnative app in ${chalk.green(root)}.`);
+  console.log(`Creating a new Webnative app in ${chalk.hex(PINK)(root)}.`);
   console.log();
 
   process.chdir(root);
@@ -140,7 +140,7 @@ const createWebnativeApp = async ({
      */
     try {
       console.log(
-        `Downloading files from repo ${chalk.cyan(
+        `Downloading files from repo ${chalk.hex(PINK)(
           `${repoUrl}`
         )}. This might take a moment.`
       )
@@ -184,27 +184,51 @@ const createWebnativeApp = async ({
     cdpath = appPath;
   }
 
-  console.log(`${chalk.green("Success!")} Created ${appName} at ${appPath}`);
+  console.log()
+  console.log()
+  console.log(
+    `${chalk.hex(PURPLE)(`&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+&&&&&&&      &&&    .&&#      /       &&&&&     &&
+&&&&&&       &&     &&&       &       #&&&&    ,&&
+&&&&&&      #&%     &&.      &&        &&&     &&&
+&&&&&&      &&      &&      &&         &&&    (&&&
+&&&&&       &       &      .&&          &     &&&&
+&&&&&      &,      %&      &&           &    #&&&&
+&&&&&      &   &   &      &&&     &          &&&&&
+&&&&&         %&          &&.     &.        /&&&&&
+&&&&          &.         &&&     (&&        &&&&&&
+&&&&         &&         *&&,     &&&       .&&&&&&
+&&&&        &&&         &&&     *&&&       &&&&&&&
+&&&/      /&&&#        &&&,    .&&&&      &&&&&&&&
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&`)}`,
+  )
+  console.log()
+  console.log()
+
+  console.log(`${chalk.green("Success!")} Created ${chalk.hex(PURPLE)(appName)} at ${chalk.hex(PURPLE)(appPath)}`);
 
   if (hasPackageJson) {
     console.log("Inside that directory, you can run several commands:");
     console.log();
-    console.log(chalk.cyan(`  ${packageManager} ${useYarn ? "" : "run "}dev`));
+    console.log(chalk.hex(PINK)(`  ${packageManager} ${useYarn ? "" : "run "}dev`));
     console.log("    Starts the development server.");
     console.log();
     console.log(
-      chalk.cyan(`  ${packageManager} ${useYarn ? "" : "run "}build`)
+      chalk.hex(PINK)(`  ${packageManager} ${useYarn ? "" : "run "}build`)
     );
     console.log("    Builds the app for production.");
     console.log();
-    console.log(chalk.cyan(`  ${packageManager} start`));
-    console.log("    Runs the built app in production mode.");
+    console.log("We suggest that begin by typing:");
     console.log();
-    console.log("We suggest that you begin by typing:");
-    console.log();
-    console.log(chalk.cyan("  cd"), cdpath);
+    console.log(chalk.hex(PINK)("  cd"), chalk.hex(PURPLE)(cdpath));
     console.log(
-      `  ${chalk.cyan(`${packageManager} ${useYarn ? "" : "run "}dev`)}`
+      `  ${chalk.hex(PINK)(`${packageManager} ${useYarn ? "" : "run "}dev`)}`
     );
   }
   console.log();

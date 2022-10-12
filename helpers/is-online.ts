@@ -1,8 +1,8 @@
-import { execSync } from "child_process";
-import dns from "dns";
-import url from "url";
+import { execSync } from 'child_process'
+import dns from 'dns'
+import url from 'url'
 
-function getProxy(): string | undefined {
+export const getProxy = (): string | undefined => {
   if (process.env.https_proxy) {
     return process.env.https_proxy;
   }
@@ -15,7 +15,7 @@ function getProxy(): string | undefined {
   }
 }
 
-export function getOnline(): Promise<boolean> {
+const getOnline = (): Promise<boolean> => {
   return new Promise((resolve) => {
     dns.lookup("registry.yarnpkg.com", (registryErr) => {
       if (!registryErr) {
@@ -38,3 +38,5 @@ export function getOnline(): Promise<boolean> {
     });
   });
 }
+
+export default getOnline

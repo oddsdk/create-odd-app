@@ -27,27 +27,27 @@ const setAuthFlow = async (program: CWA_Command): Promise<AuthFlow> => {
   if (!program.useDeviceLinking && !program.useWalletauth) {
     try {
       const res = await prompts({
-        type: "select",
-        name: "authFlow",
-        message: "Which Webnative auth flow would you like to use?",
+        type: 'select',
+        name: 'authFlow',
+        message: 'Which Webnative auth flow would you like to use?',
         choices: [
           {
-            title: "Device Linking",
+            title: 'Device Linking',
             // @ts-ignore-next-line
             description:
-              "Learn more here: https://github.com/fission-codes/webnative-app-template",
-            value: "deviceLinking",
+              'Learn more here: https://github.com/webnative-examples/webnative-app-template',
+            value: 'deviceLinking',
           },
           {
-            title: "WalletAuth",
+            title: 'WalletAuth',
             // @ts-ignore-next-line
             description:
-              "Learn more here: https://github.com/webnative-examples/walletauth",
-            value: "walletauth",
+              'Learn more here: https://github.com/webnative-examples/walletauth',
+            value: 'walletauth',
           },
         ],
-        initial: 1,
-      });
+        initial: 0,
+      })
 
       return res.authFlow.trim()
     } catch (error) {

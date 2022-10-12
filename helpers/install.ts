@@ -23,11 +23,11 @@ interface InstallArgs {
  *
  * @returns A Promise that resolves once the installation is finished.
  */
-export function install(
+const install = (
   root: string,
   dependencies: string[] | null,
   { packageManager, isOnline, devDependencies }: InstallArgs
-): Promise<void> {
+): Promise<void> => {
   /**
    * (p)npm-specific command-line flags.
    */
@@ -113,3 +113,5 @@ export function install(
     })
   })
 }
+
+export default install

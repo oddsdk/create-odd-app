@@ -1,8 +1,10 @@
 import fs from "fs";
 
-export function makeDir(
+const makeDir = (
   root: string,
   options = { recursive: true }
-): Promise<void> {
+): Promise<void> => {
   return fs.promises.mkdir(root, options);
 }
+
+export default makeDir

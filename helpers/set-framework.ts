@@ -44,7 +44,7 @@ const setFramework = async (program: CWA_Command): Promise<Framework> => {
             value: 'react',
           },
         ],
-        initial: 1,
+        initial: 0,
       })
 
       return res.framework.trim()

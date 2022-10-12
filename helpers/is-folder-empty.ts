@@ -2,7 +2,7 @@ import chalk from "chalk";
 import fs from "fs";
 import path from "path";
 
-export function isFolderEmpty(root: string, name: string): boolean {
+const isFolderEmpty = (root: string, name: string): boolean => {
   const validFiles = [
     ".DS_Store",
     ".git",
@@ -59,3 +59,5 @@ export function isFolderEmpty(root: string, name: string): boolean {
 
   return true;
 }
+
+export default isFolderEmpty
