@@ -61,9 +61,6 @@ const createWebnativeApp = async ({
   let repoUrl: URL | undefined
 
   if (framework && authFlow) {
-    console.log("authFlow", authFlow);
-    console.log("framework", framework);
-    console.log("Repos[authFlow][framework]", Repos[authFlow][framework]);
     try {
       repoUrl = new URL(Repos[authFlow][framework])
     } catch (error: any) {
@@ -84,7 +81,6 @@ const createWebnativeApp = async ({
       }
 
       repoInfo = await getRepoInfo(repoUrl)
-      console.log("repoInfo", repoInfo);
 
       if (!repoInfo) {
         console.error(
@@ -132,6 +128,7 @@ const createWebnativeApp = async ({
   const originalDirectory = process.cwd();
 
   console.log(`Creating a new Webnative app in ${chalk.green(root)}.`);
+  console.log();
 
   process.chdir(root);
 
@@ -148,6 +145,7 @@ const createWebnativeApp = async ({
           `${repoUrl}`
         )}. This might take a moment.`
       )
+      console.log()
       const repoInfo2 = repoInfo;
       await retry(() => downloadAndExtractRepo(root, repoInfo2), {
         // @ts-ignore-next-line
@@ -165,11 +163,11 @@ const createWebnativeApp = async ({
         isErrorLike(reason) ? reason.message : reason + ""
       );
     }
-    console.log("root", root);
 
     hasPackageJson = fs.existsSync(packageJsonPath);
     if (hasPackageJson) {
       console.log("Installing packages. This might take a couple of minutes.");
+      console.log();
 
       await install(root, null, { packageManager, isOnline });
     }
