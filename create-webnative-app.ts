@@ -40,16 +40,17 @@ type ReposType = {
   }
 }
 
+const WEBNATIVE_EXAMPLES_URL = 'https://github.com/webnative-examples/'
 const Repos: ReposType = {
   deviceLinking: {
-    react: 'https://github.com/webnative-examples/webnative-app-template-react',
-    sveltekit: 'https://github.com/fission-codes/webnative-app-template',
+    react: `${WEBNATIVE_EXAMPLES_URL}webnative-app-template-react`,
+    sveltekit: `${WEBNATIVE_EXAMPLES_URL}webnative-app-template`,
   },
   walletauth: {
-    react: 'https://github.com/webnative-examples/walletauth-react',
-    sveltekit: 'https://github.com/webnative-examples/walletauth',
+    react: `${WEBNATIVE_EXAMPLES_URL}walletauth-react`,
+    sveltekit: `${WEBNATIVE_EXAMPLES_URL}walletauth`,
   },
-}
+};
 
 const createWebnativeApp = async ({
   appPath,
@@ -69,7 +70,7 @@ const createWebnativeApp = async ({
         process.exit(1)
       }
     }
-    console.log('repoUrl', repoUrl)
+
     if (repoUrl) {
       if (repoUrl.origin !== 'https://github.com') {
         console.error(
