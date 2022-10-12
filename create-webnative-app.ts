@@ -1,9 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import retry from 'async-retry'
 import chalk from 'chalk'
-import cpy from 'cpy'
 import fs from 'fs'
-import os from 'os'
 import path from 'path'
 
 import {
