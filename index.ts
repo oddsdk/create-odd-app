@@ -5,6 +5,7 @@ import path from 'path'
 import checkForUpdate from 'update-check'
 
 import createWebnativeApp, { DownloadError } from './create-webnative-app'
+import { PINK } from './helpers/colours'
 import getPkgManager from './helpers/get-pkg-manager'
 import validateNpmName from './helpers/validate-pkg'
 import setAuthFlow, { AuthFlow } from './helpers/set-auth-flow'
@@ -25,58 +26,70 @@ export type CWA_Command = CommandType & {
 
 let projectPath: string = '';
 
-// Begin the flow
+/**
+ * Flow to be run when `create-webnative-app` is called. Can be called as:
+ * `create-webnative-app` or `create-webnative-app <my-app-name>`
+ * Args can also be passed in: --use-npm, --use-yarn, --use-pnpm,
+ * --use-sveltekit, --use-react, --use-walletauth, --use-deviceLinking
+ */
 const program: CWA_Command = new Command(packageJson.name)
   .version(packageJson.version)
   .argument('[project-directory]')
-  .usage(`${chalk.green('[project-directory]')} [options]`)
+  .usage(`${chalk.hex(PINK)('[project-directory]')} [options]`)
   .action((name) => {
     if (typeof name === 'string') {
       projectPath = name.trim()
     }
   })
   .option(
-    '--ts, --typescript',
-    `
-  Initialize as a TypeScript project.
-`
-  )
-  .option(
     '--use-npm',
     `
-  Explicitly tell the CLI to bootstrap the app using npm
-`
+  Explicitly tell the CLI to bootstrap the app using npm(This is the default option anyway)
+`,
+  )
+  .option(
+    '--use-yarn',
+    `
+  Explicitly tell the CLI to bootstrap the app using yarn
+`,
   )
   .option(
     '--use-pnpm',
     `
   Explicitly tell the CLI to bootstrap the app using pnpm
-`
+`,
   )
   .option(
     '--use-sveltekit',
     `
   Explicitly tell the CLI to build the application using SvelteKit
-`
+`,
   )
   .option(
     '--use-react',
     `
   Explicitly tell the CLI to build the application using React
-`
+`,
   )
   .option(
     '--use-walletauth',
     `
   Explicitly tell the CLI to build the application using Webnative's WalletAuth flow
-`
+`,
   )
   .option(
     '--use-devicelinking',
     `
   Explicitly tell the CLI to build the application using Webnative's Device Linking flow
-`
+`,
   )
+  // TODO: Add option of generating apps without typescript
+  //   .option(
+  //     '--ts, --typescript',
+  //     `
+  //   Initialize as a TypeScript project.
+  // `
+  //   )
   .allowUnknownOption()
   .parse(process.argv)
 
