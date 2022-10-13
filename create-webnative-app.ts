@@ -230,7 +230,7 @@ const createWebnativeApp = async ({
     );
     console.log("    Builds the app for production.");
     console.log();
-    console.log("We suggest that begin by typing:");
+    console.log("We suggest you begin by typing:");
     console.log();
     console.log(chalk.hex(PINK)("  cd"), chalk.hex(PURPLE)(cdpath));
     console.log(
