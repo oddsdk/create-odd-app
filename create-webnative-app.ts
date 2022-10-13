@@ -192,7 +192,6 @@ const createWebnativeApp = async ({
   }
 
   console.log()
-  console.log()
   console.log(
     `${chalk.hex(PURPLE)(`&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
