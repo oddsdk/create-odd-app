@@ -6,7 +6,7 @@ CWA is a generator that allows you to spin either React or SvelteKit flavours of
 
 ## Demo
 
-<video width="600" autoplay loop>
+<video width="600" height="300" autoplay loop>
   <source src="https://ipfs.runfission.com/ipns/hamdii.files.fission.name/p/Video/cwa.mov" type="video/mp4">
 </video>
 
