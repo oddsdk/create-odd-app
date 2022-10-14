@@ -4,13 +4,9 @@
 
 CWA is a CLI generator that allows you to spin either React or SvelteKit flavours of Fission's Webnative App Template and Webnative WalletAuth repos.
 
-<!-- ## 🎬 Demo -->
+## 🎬 Demo
 
-<!-- ![Demo with WalletAuth in SvelteKit](https://ipfs.runfission.com/ipns/hamdii.files.fission.name/p/Video/cwa.mp4) -->
-
-<!-- <video width="500" autoplay loop>
-  <source src="https://ipfs.runfission.com/ipns/hamdii.files.fission.name/p/Video/cwa.mov" type="video/mp4">
-</video> -->
+https://user-images.githubusercontent.com/1179291/195956380-8c1442fa-75d9-4167-8e0f-b8660d40e149.mp4
 
 ## 💻 Usage
 
