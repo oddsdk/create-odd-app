@@ -8,6 +8,7 @@ import createWebnativeApp, { DownloadError } from './create-webnative-app'
 import { PINK } from './helpers/colours'
 import getPkgManager from './helpers/get-pkg-manager'
 import validateNpmName from './helpers/validate-pkg'
+import setAppInfo, { AppInfo } from './helpers/set-app-info'
 import setAuthFlow, { AuthFlow } from './helpers/set-auth-flow'
 import setFramework, { Framework } from './helpers/set-framework'
 import setProjectPath from './helpers/set-project-path'
@@ -103,6 +104,9 @@ const run = async (): Promise<void> => {
   // Detect the selected framework or ask the user which they'd prefer
   const framework = await setFramework(program)
 
+  // Ask the user if they would like to change the default app-info.ts values(og:title, og:description, etc...)
+  const appInfo = await setAppInfo(authFlow)
+
   // Run NPM validation checks against projectName
   const resolvedProjectPath = path.resolve(projectPath)
   const projectName = path.basename(resolvedProjectPath)
@@ -126,6 +130,7 @@ const run = async (): Promise<void> => {
 
   try {
     await createWebnativeApp({
+      appInfo,
       appPath: resolvedProjectPath,
       authFlow,
       framework,
@@ -139,9 +144,10 @@ const run = async (): Promise<void> => {
     }
 
     await createWebnativeApp({
+      appInfo,
       appPath: resolvedProjectPath,
-      authFlow: AuthFlow.deviceLinking,
-      framework: Framework.sveltekit,
+      authFlow: AuthFlow.DeviceLinking,
+      framework: Framework.SvelteKit,
       packageManager,
       // TODO: Add option of generating apps without typescript
       // typescript: program.typescript,

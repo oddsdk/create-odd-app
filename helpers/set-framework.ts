@@ -3,8 +3,8 @@ import prompts from 'prompts'
 import type { CWA_Command } from "../index";
 
 export enum Framework {
-  react,
-  sveltekit,
+  React = 'react',
+  SvelteKit = 'sveltekit',
 }
 
 /**
@@ -16,11 +16,11 @@ export enum Framework {
  */
 const setFramework = async (program: CWA_Command): Promise<Framework> => {
   if (program.useSveltekit) {
-    return Framework.sveltekit
+    return Framework.SvelteKit
   }
 
   if (program.useReact) {
-    return Framework.react
+    return Framework.React
   }
 
   // If the user hasn't explicitly requested a framework, ask them
@@ -54,7 +54,7 @@ const setFramework = async (program: CWA_Command): Promise<Framework> => {
   }
 
   // Default to SvelteKit
-  return Framework.sveltekit
+  return Framework.SvelteKit
 };
 
 export default setFramework

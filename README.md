@@ -2,15 +2,15 @@
 
 [![Built by FISSION](https://img.shields.io/badge/⌘-Built_by_FISSION-purple.svg)](https://fission.codes) [![Built by FISSION](https://img.shields.io/badge/webnative-v0.34.1-purple.svg)](https://github.com/fission-suite/webnative) [![Discord](https://img.shields.io/discord/478735028319158273.svg)](https://discord.gg/zAQBDEq) [![Discourse](https://img.shields.io/discourse/https/talk.fission.codes/topics)](https://talk.fission.codes)
 
-CWA is a generator that allows you to spin either React or SvelteKit flavours of Fission's Webnative App Template and Webnative WalletAuth repos.
+CWA is a CLI generator that allows you to spin either React or SvelteKit flavours of Fission's Webnative App Template and Webnative WalletAuth repos.
 
 ## 🎬 Demo
 
-![Demo with WalletAuth in SvelteKit](https://ipfs.runfission.com/ipns/hamdii.files.fission.name/p/Video/cwa.mp4)
+<!-- ![Demo with WalletAuth in SvelteKit](https://ipfs.runfission.com/ipns/hamdii.files.fission.name/p/Video/cwa.mp4) -->
 
-<!-- <video width="600" height="300" autoplay loop>
+<video width="500" autoplay loop>
   <source src="https://ipfs.runfission.com/ipns/hamdii.files.fission.name/p/Video/cwa.mov" type="video/mp4">
-</video> -->
+</video>
 
 ## 💻 Usage
 
@@ -26,7 +26,17 @@ pnpm create webnative-app
 
 ### Options
 
-`create-webnative-app` comes with the following options:
+You can invoke `create-webnative-app` directly with an app name or you can wait to be prompted to set one:
+
+```bash
+npx create-webnative-app@latest my-webnative-app
+# or
+yarn create webnative-app my-webnative-app
+# or
+pnpm create webnative-app my-webnative-app
+```
+
+`create-webnative-app` also comes with the following options:
 
 - **--use-npm** - Explicitly tell the CLI to bootstrap the app using `npm`. This is the default option.
 - **--use-pnpm** - Explicitly tell the CLI to bootstrap the app using `pnpm`. To bootstrap using pnpm we recommend running `pnpm create webnative-app`

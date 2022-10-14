@@ -3,8 +3,8 @@ import prompts from 'prompts'
 import type { CWA_Command } from '../index'
 
 export enum AuthFlow {
-  deviceLinking,
-  walletauth,
+  DeviceLinking = 'deviceLinking',
+  WalletAuth = 'walletauth',
 }
 
 /**
@@ -16,11 +16,11 @@ export enum AuthFlow {
  */
 const setAuthFlow = async (program: CWA_Command): Promise<AuthFlow> => {
   if (program.useDeviceLinking) {
-    return AuthFlow.deviceLinking
+    return AuthFlow.DeviceLinking
   }
 
   if (program.useWalletauth) {
-    return AuthFlow.walletauth
+    return AuthFlow.WalletAuth
   }
 
   // If the user hasn't explicitly requested an auth flow, ask them
@@ -56,7 +56,7 @@ const setAuthFlow = async (program: CWA_Command): Promise<AuthFlow> => {
   }
 
   // Default to Device Linking
-  return AuthFlow.deviceLinking
+  return AuthFlow.DeviceLinking
 }
 
 export default setAuthFlow

@@ -16,6 +16,7 @@ import install from './helpers/install'
 import isFolderEmpty from './helpers/is-folder-empty'
 import getOnline from './helpers/is-online'
 import isWriteable from './helpers/is-writeable'
+import { writeAppInfo, type AppInfo } from './helpers/set-app-info'
 import type { AuthFlow } from './helpers/set-auth-flow'
 import type { Framework } from './helpers/set-framework'
 import type { PackageManager } from './helpers/get-pkg-manager'
@@ -23,12 +24,11 @@ import type { PackageManager } from './helpers/get-pkg-manager'
 export class DownloadError extends Error {}
 
 type Options = {
+  appInfo?: AppInfo;
   appPath: string;
   authFlow: AuthFlow;
   framework: Framework;
   packageManager: PackageManager;
-  example?: string;
-  examplePath?: string;
   typescript?: boolean;
 }
 
@@ -56,6 +56,7 @@ const Repos: ReposType = {
  * @param Options
  */
 const createWebnativeApp = async ({
+  appInfo,
   appPath,
   authFlow,
   framework,
@@ -147,35 +148,40 @@ const createWebnativeApp = async ({
     try {
       console.log(
         `Downloading files from repo ${chalk.hex(PINK)(
-          `${repoUrl}`
-        )}. This might take a moment.`
+          `${repoUrl}`,
+        )}. This might take a moment.`,
       )
       console.log()
-      const repoInfo2 = repoInfo;
+      const repoInfo2 = repoInfo
       await retry(() => downloadAndExtractRepo(root, repoInfo2), {
         // @ts-ignore-next-line
         retries: 3,
-      });
+      })
     } catch (reason) {
       function isErrorLike(err: unknown): err is { message: string } {
         return (
-          typeof err === "object" &&
+          typeof err === 'object' &&
           err !== null &&
-          typeof (err as { message?: unknown }).message === "string"
-        );
+          typeof (err as { message?: unknown }).message === 'string'
+        )
       }
       throw new DownloadError(
-        isErrorLike(reason) ? reason.message : reason + ""
-      );
+        isErrorLike(reason) ? reason.message : reason + '',
+      )
     }
 
-    hasPackageJson = fs.existsSync(packageJsonPath);
-    if (hasPackageJson) {
-      console.log();
-      console.log("Installing packages. This might take a couple of minutes...");
-      console.log();
+    // Write app-info.ts values
+    if (appInfo) {
+      await writeAppInfo({ appInfo, authFlow, framework, root })
+    }
 
-      await install(root, null, { packageManager, isOnline });
+    hasPackageJson = fs.existsSync(packageJsonPath)
+    if (hasPackageJson) {
+      console.log()
+      console.log('Installing packages. This might take a couple of minutes...')
+      console.log()
+
+      await install(root, null, { packageManager, isOnline })
     }
   }
 
