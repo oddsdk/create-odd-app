@@ -44,10 +44,7 @@ const setAppInfo = async (
       message: `Would you like to modify your app's name(title/og:title), description(og:description) or URL(base url)?`,
       initial: false,
     })
-    console.log(
-      'authFlow === AuthFlow.walletauth',
-      authFlow === AuthFlow.WalletAuth,
-    )
+
     // If the user has said yes, prompt them to edit the individual values
     if (confirmRes.editAppInfo) {
       let appInfo =
@@ -152,8 +149,6 @@ export const writeAppInfo = async ({
     // )
 
     fs.writeFileSync(appInfoPath, edits, 'utf8')
-    // const newData = fs.readFileSync(appInfoPath, 'utf8')
-    // console.log('newData', newData)
 
     console.log()
     console.log(`Writing to app-info.ts at ${chalk.hex(PINK)(appInfoPath)}.`)
