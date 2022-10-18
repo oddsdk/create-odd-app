@@ -1,6 +1,6 @@
 {
   "name": "create-webnative-app",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "keywords": [
     "fission",
     "react",
@@ -27,7 +27,6 @@
     "dev": "ncc build ./index.ts -w -o dist/",
     "prerelease": "rimraf ./dist/",
     "release": "ncc build ./index.ts -o ./dist/ --minify --no-cache --no-source-map-register",
-    "prepublishOnly": "cd ../../ && turbo run build",
     "build": "npm run release"
   },
   "devDependencies": {
