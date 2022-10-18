@@ -13,7 +13,7 @@ https://user-images.githubusercontent.com/1179291/195956380-8c1442fa-75d9-4167-8
 You can use the following commands via your package manager of choice to invoke `create-webnative-app`
 
 ```bash
-npx create-webnative-app@latest
+npx create-webnative-app
 # or
 yarn create webnative-app
 # or
