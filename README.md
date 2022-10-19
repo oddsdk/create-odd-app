@@ -25,7 +25,7 @@ pnpm create webnative-app
 You can invoke `create-webnative-app` directly with an app name or you can wait to be prompted to set one:
 
 ```bash
-npx create-webnative-app@latest my-webnative-app
+npx create-webnative-app my-webnative-app
 # or
 yarn create webnative-app my-webnative-app
 # or
@@ -34,13 +34,13 @@ pnpm create webnative-app my-webnative-app
 
 `create-webnative-app` also comes with the following options:
 
-- **--use-npm** - Explicitly tell the CLI to bootstrap the app using `npm`. This is the default option.
-- **--use-pnpm** - Explicitly tell the CLI to bootstrap the app using `pnpm`. To bootstrap using pnpm we recommend running `pnpm create webnative-app`
-- **--use-yarn** - Explicitly tell the CLI to bootstrap the app using `yarn`. To bootstrap using pnpm we recommend running `yarn create webnative-app`
 - **--use-sveltekit** - Explicitly tell the CLI to build the application using [SvelteKit](https://kit.svelte.dev/)
 - **--use-react** - Explicitly tell the CLI to build the application using [React](https://reactjs.org/)
 - **--use-walletauth** - Explicitly tell the CLI to build the application using Webnative's [WalletAuth flow](https://github.com/webnative-examples/walletauth)
 - **--use-devicelinking** - Explicitly tell the CLI to build the application using Webnative's [Device Linking flow](https://github.com/webnative-examples/webnative-app-template)
+- **--use-npm** - Explicitly tell the CLI to bootstrap the app using `npm`. This is the default option.
+- **--use-pnpm** - Explicitly tell the CLI to bootstrap the app using `pnpm`. To bootstrap using pnpm we recommend running `pnpm create webnative-app`
+- **--use-yarn** - Explicitly tell the CLI to bootstrap the app using `yarn`. To bootstrap using pnpm we recommend running `yarn create webnative-app`
 
 ## 🤔 What's Webnative?
 
