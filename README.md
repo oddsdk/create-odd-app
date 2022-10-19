@@ -8,7 +8,7 @@ CWA is a CLI generator that allows you to spin either React or SvelteKit flavour
 
 https://user-images.githubusercontent.com/1179291/195956380-8c1442fa-75d9-4167-8e0f-b8660d40e149.mp4
 
-## 💻 Usage
+## 💻 Getting Started
 
 You can use the following commands via your package manager of choice to invoke `create-webnative-app`
 
