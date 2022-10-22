@@ -98,8 +98,8 @@ const run = async (): Promise<void> => {
   // Detect the selected framework or ask the user which they'd prefer
   const framework = await setFramework(program)
 
-  // Ask the user if they'd like to remove TypeScript
-  const removeTypescript = await setTypescript()
+  // Ask the user if they'd like to remove TypeScript(currently only supported in the React build)
+  const removeTypescript = framework === Framework.React ? await setTypescript() : false
 
   // Ask the user if they would like to change the default app-info.ts values(og:title, og:description, etc...)
   const appInfo = await setAppInfo(authFlow)

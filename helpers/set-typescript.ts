@@ -133,28 +133,22 @@ const switchReactToJavascript = async (root: string): Promise<void> => {
 }
 
 /**
+ * TODO: Create SvelteKit TS -> JS transpiler
  * Switch a SvelteKit codebase to JavaScript
  *
  * @param root
  */
 const switchSvelteKitToJavascript = async (root: string): Promise<void> => {
   try {
-    const srcPath = `${root}/src`
-
     const packagesToRemove: {
       dependencies: string[]
-      devDependencies: string[]
     } = {
       dependencies: [
-        '@types/jest',
-        '@types/node',
-        '@types/react',
-        '@types/react-dom',
-      ],
-      devDependencies: [
-        '@types/qrcode-svg',
         '@typescript-eslint/eslint-plugin',
         '@typescript-eslint/parser',
+        'ts-node',
+        'tsconfig-paths',
+        'tslib',
         'typescript',
       ],
     }
@@ -165,9 +159,6 @@ const switchSvelteKitToJavascript = async (root: string): Promise<void> => {
     )
     packagesToRemove.dependencies.forEach(
       (pkg) => delete packageJsonFile.dependencies[pkg],
-    )
-    packagesToRemove.devDependencies.forEach(
-      (pkg) => delete packageJsonFile.devDependencies[pkg],
     )
 
     // Navigate to the root of the codebase
@@ -190,41 +181,6 @@ const switchSvelteKitToJavascript = async (root: string): Promise<void> => {
     execSync('rm tsconfig.json', {
       stdio: 'inherit',
     })
-
-    // Remove any .ts and .tsx files from the src directiory
-    execSync(
-      `cd ${srcPath} & find . -type f -name '*.ts' -exec rm {} + & find . -type f -name '*.tsx' -exec rm {} +`,
-      {
-        stdio: 'inherit',
-      },
-    )
-
-    // Remove TS-related code from eslint
-    const eslintrcFile = await fs.promises.readFile(
-      `${root}/.eslintrc.js`,
-      'utf8',
-    )
-
-    // Replace extends
-    let eslintrcEdits = eslintrcFile.replace(
-      '"plugin:@typescript-eslint/recommended",',
-      '',
-    )
-    eslintrcEdits = eslintrcEdits.replace(
-      'parser: "@typescript-eslint/parser",',
-      '',
-    )
-    eslintrcEdits = eslintrcEdits.replace(
-      'plugins: ["react", "@typescript-eslint"]',
-      'plugins: ["react"]',
-    )
-    eslintrcEdits = eslintrcEdits.replace(
-      '"@typescript-eslint/no-explicit-any": "off",',
-      '',
-    )
-
-    // Write the updated eslintrc file
-    await fs.promises.writeFile(`${root}/.eslintrc.js`, eslintrcEdits, 'utf8')
 
     // Write the updated package.json file
     await fs.promises.writeFile(
