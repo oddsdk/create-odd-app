@@ -17,6 +17,7 @@ import isFolderEmpty from './helpers/is-folder-empty'
 import getOnline from './helpers/is-online'
 import isWriteable from './helpers/is-writeable'
 import { writeAppInfo, type AppInfo } from './helpers/set-app-info'
+import { switchToJavaScript } from './helpers/set-typescript'
 import type { AuthFlow } from './helpers/set-auth-flow'
 import type { Framework } from './helpers/set-framework'
 import type { PackageManager } from './helpers/get-pkg-manager'
@@ -24,12 +25,12 @@ import type { PackageManager } from './helpers/get-pkg-manager'
 export class DownloadError extends Error {}
 
 type Options = {
-  appInfo?: AppInfo;
-  appPath: string;
-  authFlow: AuthFlow;
-  framework: Framework;
-  packageManager: PackageManager;
-  typescript?: boolean;
+  appInfo?: AppInfo
+  appPath: string
+  authFlow: AuthFlow
+  framework: Framework
+  packageManager: PackageManager
+  removeTypescript?: boolean
 }
 
 type ReposType = {
@@ -61,6 +62,7 @@ const createWebnativeApp = async ({
   authFlow,
   framework,
   packageManager,
+  removeTypescript,
 }: Options): Promise<void> => {
   let repoInfo: RepoInfo | undefined
   let repoUrl: URL | undefined
@@ -173,6 +175,11 @@ const createWebnativeApp = async ({
     // Write app-info.ts values
     if (appInfo) {
       await writeAppInfo({ appInfo, authFlow, framework, root })
+    }
+
+    // Conver TS project to JS
+    if (removeTypescript) {
+      await switchToJavaScript({ framework, root })
     }
 
     hasPackageJson = fs.existsSync(packageJsonPath)

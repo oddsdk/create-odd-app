@@ -106,7 +106,7 @@ export const writeAppInfo = async ({
 }: WriteAppInfoParams): Promise<void> => {
   try {
     const appInfoPath = `${root}/src/lib/app-info.ts`
-    const originalFile = fs.readFileSync(appInfoPath, 'utf8')
+    const originalFile = await fs.promises.readFile(appInfoPath, 'utf8')
     let defaultAppInfo =
       authFlow === AuthFlow.WalletAuth ? { ...APP_INFO_WALLET_AUTH } : { ...APP_INFO_WAT }
 
@@ -148,7 +148,7 @@ export const writeAppInfo = async ({
     //   `appImageURL = '${appInfo.appImageURL}'`,
     // )
 
-    fs.writeFileSync(appInfoPath, edits, 'utf8')
+    await fs.promises.writeFile(appInfoPath, edits, 'utf8')
 
     console.log()
     console.log(`Writing to app-info.ts at ${chalk.hex(PINK)(appInfoPath)}.`)
