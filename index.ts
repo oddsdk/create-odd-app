@@ -12,6 +12,7 @@ import setAppInfo, { AppInfo } from './helpers/set-app-info'
 import setAuthFlow, { AuthFlow } from './helpers/set-auth-flow'
 import setFramework, { Framework } from './helpers/set-framework'
 import setProjectPath from './helpers/set-project-path'
+import setTypescript from './helpers/set-typescript'
 import packageJson from './package.json'
 
 export type CWA_Command = CommandType & {
@@ -84,13 +85,6 @@ const program: CWA_Command = new Command(packageJson.name)
   Explicitly tell the CLI to build the application using Webnative's Device Linking flow
 `,
   )
-  // TODO: Add option of generating apps without typescript
-  //   .option(
-  //     '--ts, --typescript',
-  //     `
-  //   Initialize as a TypeScript project.
-  // `
-  //   )
   .allowUnknownOption()
   .parse(process.argv)
 
@@ -103,6 +97,9 @@ const run = async (): Promise<void> => {
 
   // Detect the selected framework or ask the user which they'd prefer
   const framework = await setFramework(program)
+
+  // Ask the user if they'd like to remove TypeScript(currently only supported in the React build)
+  const removeTypescript = framework === Framework.React ? await setTypescript() : false
 
   // Ask the user if they would like to change the default app-info.ts values(og:title, og:description, etc...)
   const appInfo = await setAppInfo(authFlow)
@@ -118,7 +115,7 @@ const run = async (): Promise<void> => {
       )} because of npm naming restrictions:`
     )
 
-    problems!.forEach((p) => console.error(`    ${chalk.red.bold('*')} ${p}`))
+    problems!.forEach((p) => console.error(` ${chalk.red.bold('*')} ${p}`))
     process.exit(1)
   }
 
@@ -135,8 +132,7 @@ const run = async (): Promise<void> => {
       authFlow,
       framework,
       packageManager,
-      // TODO: Add option of generating apps without typescript
-      // typescript: program.typescript,
+      removeTypescript,
     })
   } catch (reason) {
     if (!(reason instanceof DownloadError)) {
@@ -149,8 +145,7 @@ const run = async (): Promise<void> => {
       authFlow: AuthFlow.DeviceLinking,
       framework: Framework.SvelteKit,
       packageManager,
-      // TODO: Add option of generating apps without typescript
-      // typescript: program.typescript,
+      removeTypescript,
     })
   }
 }
