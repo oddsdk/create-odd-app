@@ -2,7 +2,7 @@
 
 [![Built by FISSION](https://img.shields.io/badge/⌘-Built_by_FISSION-purple.svg)](https://fission.codes) [![Built by FISSION](https://img.shields.io/badge/webnative-v0.34.1-purple.svg)](https://github.com/fission-suite/webnative) [![Discord](https://img.shields.io/discord/478735028319158273.svg)](https://discord.gg/zAQBDEq) [![Discourse](https://img.shields.io/discourse/https/talk.fission.codes/topics)](https://talk.fission.codes)
 
-CWA is a CLI generator that allows you to spin either React or SvelteKit flavours of Fission's Webnative App Template and Webnative WalletAuth repos.
+CWA is a CLI generator that allows you to spin up either React or SvelteKit flavours of Fission's [Webnative App Template](https://github.com/webnative-examples/webnative-app-template) and [Webnative WalletAuth](https://github.com/webnative-examples/walletauth) repos.
 
 ## 🎬 Demo
 
