@@ -247,7 +247,7 @@ const createWebnativeApp = async ({
     console.log();
     console.log(`  cd ${chalk.green(cdpath)}`);
     console.log(
-      `  ${packageManager} ${useYarn ? "" : "run "}dev)}`
+      `  ${packageManager} ${useYarn ? "" : "run "}dev`
     );
   }
   console.log();
