@@ -2,7 +2,6 @@ import chalk from 'chalk'
 import fs from 'fs'
 import prompts from 'prompts'
 
-import { PINK } from './colours'
 import { AuthFlow } from './set-auth-flow'
 import { Framework } from './set-framework'
 
@@ -151,7 +150,7 @@ export const writeAppInfo = async ({
     await fs.promises.writeFile(appInfoPath, edits, 'utf8')
 
     console.log()
-    console.log(`Writing to app-info.ts at ${chalk.hex(PINK)(appInfoPath)}.`)
+    console.log(`Writing to app-info.ts at ${chalk.green(appInfoPath)}.`)
     console.log()
   } catch (err) {
     console.error(err)

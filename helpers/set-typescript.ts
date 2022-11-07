@@ -3,8 +3,6 @@ import { execSync } from 'child_process'
 import fs from 'fs'
 import prompts from 'prompts'
 
-import { PINK } from './colours'
-import { AuthFlow } from './set-auth-flow'
 import { Framework } from './set-framework'
 
 /**
@@ -221,7 +219,7 @@ export const switchToJavaScript = async ({
 
     console.log()
     console.log(
-      `Removing TypeScript from your project at ${chalk.hex(PINK)(root)}.`,
+      `Removing TypeScript from your project at ${chalk.green(root)}.`,
     )
     console.log()
   } catch (err) {

@@ -3,7 +3,7 @@ import chalk from 'chalk'
 import fs from 'fs'
 import path from 'path'
 
-import { PINK, PURPLE } from './helpers/colours'
+import { ORANGE } from './helpers/colours'
 import makeDir from './helpers/make-dir'
 import {
   tryGitInit,
@@ -135,7 +135,7 @@ const createWebnativeApp = async ({
   const originalDirectory = process.cwd();
 
   console.log();
-  console.log(`Creating a new Webnative app in ${chalk.hex(PINK)(root)}.`);
+  console.log(`Creating a new Webnative app in ${chalk.green(root)}.`);
   console.log();
 
   process.chdir(root);
@@ -149,7 +149,7 @@ const createWebnativeApp = async ({
      */
     try {
       console.log(
-        `Downloading files from repo ${chalk.hex(PINK)(
+        `Downloading files from repo ${chalk.green(
           `${repoUrl}`,
         )}. This might take a moment.`,
       )
@@ -206,7 +206,7 @@ const createWebnativeApp = async ({
 
   console.log()
   console.log(
-    `${chalk.hex(PURPLE)(`    %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
+    `${chalk.hex(ORANGE)(`    %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 %@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%
 @@@@@%     %@@@@@@%         %@@@@@@@%     %@@@@@
@@ -230,24 +230,24 @@ const createWebnativeApp = async ({
   console.log()
   console.log()
 
-  console.log(`${chalk.green("Success!")} Created ${chalk.hex(PURPLE)(appName)} at ${chalk.hex(PURPLE)(appPath)}`);
+  console.log(`${chalk.green("Success!")} Created ${chalk.green(appName)} at ${chalk.green(appPath)}`);
 
   if (hasPackageJson) {
     console.log("Inside that directory, you can run several commands:");
     console.log();
-    console.log(chalk.hex(PINK)(`  ${packageManager} ${useYarn ? "" : "run "}dev`));
+    console.log(`  ${packageManager} ${useYarn ? "" : "run "}dev`);
     console.log("    Starts the development server.");
     console.log();
     console.log(
-      chalk.hex(PINK)(`  ${packageManager} ${useYarn ? "" : "run "}build`)
+      `  ${packageManager} ${useYarn ? "" : "run "}build`
     );
     console.log("    Builds the app for production.");
     console.log();
     console.log("We suggest you begin by typing:");
     console.log();
-    console.log(chalk.hex(PINK)("  cd"), chalk.hex(PURPLE)(cdpath));
+    console.log(`  cd ${chalk.green(cdpath)}`);
     console.log(
-      `  ${chalk.hex(PINK)(`${packageManager} ${useYarn ? "" : "run "}dev`)}`
+      `  ${packageManager} ${useYarn ? "" : "run "}dev)}`
     );
   }
   console.log();

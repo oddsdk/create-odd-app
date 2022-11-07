@@ -1,7 +1,5 @@
-export const PINK = '#FF5274'
-export const PURPLE = '#6446FA'
+export const ORANGE = '#F26D64'
 
 export default {
-  PINK,
-  PURPLE
+  ORANGE,
 }

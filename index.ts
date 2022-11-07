@@ -5,7 +5,6 @@ import path from 'path'
 import checkForUpdate from 'update-check'
 
 import createWebnativeApp, { DownloadError } from './create-webnative-app'
-import { PINK } from './helpers/colours'
 import getPkgManager from './helpers/get-pkg-manager'
 import validateNpmName from './helpers/validate-pkg'
 import setAppInfo, { AppInfo } from './helpers/set-app-info'
@@ -37,7 +36,7 @@ let projectPath: string = '';
 const program: CWA_Command = new Command(packageJson.name)
   .version(packageJson.version)
   .argument('[project-directory]')
-  .usage(`${chalk.hex(PINK)('[project-directory]')} [options]`)
+  .usage(`${chalk.green('[project-directory]')} [options]`)
   .action((name) => {
     if (typeof name === 'string') {
       projectPath = name.trim()
