@@ -19,7 +19,7 @@ export type CWA_Command = CommandType & {
   typescript?: boolean;
   useNpm?: boolean;
   usePnpm?: boolean;
-  useDeviceLinking?: boolean;
+  useWebcrypto?: boolean;
   useWalletauth?: boolean;
   useSveltekit?: boolean;
   useReact?: boolean;
@@ -31,7 +31,7 @@ let projectPath: string = '';
  * Flow to be run when `create-webnative-app` is called. Can be called as:
  * `create-webnative-app` or `create-webnative-app <my-app-name>`
  * Args can also be passed in: --use-npm, --use-yarn, --use-pnpm,
- * --use-sveltekit, --use-react, --use-walletauth, --use-deviceLinking
+ * --use-sveltekit, --use-react, --use-walletauth, --use-webcrypto
  */
 const program: CWA_Command = new Command(packageJson.name)
   .version(packageJson.version)
@@ -79,9 +79,9 @@ const program: CWA_Command = new Command(packageJson.name)
 `,
   )
   .option(
-    '--use-devicelinking',
+    '--use-webcrypto',
     `
-  Explicitly tell the CLI to build the application using Webnative's Device Linking flow
+  Explicitly tell the CLI to build the application using Webnative's WebCrypto Device Linking flow
 `,
   )
   .allowUnknownOption()
@@ -141,7 +141,7 @@ const run = async (): Promise<void> => {
     await createWebnativeApp({
       appInfo,
       appPath: resolvedProjectPath,
-      authFlow: AuthFlow.DeviceLinking,
+      authFlow: AuthFlow.WebCrypto,
       framework: Framework.SvelteKit,
       packageManager,
       removeTypescript,

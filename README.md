@@ -37,7 +37,7 @@ pnpm create webnative-app my-webnative-app
 - **--use-sveltekit** - Explicitly tell the CLI to build the application using [SvelteKit](https://kit.svelte.dev/)
 - **--use-react** - Explicitly tell the CLI to build the application using [React](https://reactjs.org/)
 - **--use-walletauth** - Explicitly tell the CLI to build the application using Webnative's [WalletAuth flow](https://github.com/webnative-examples/walletauth)
-- **--use-devicelinking** - Explicitly tell the CLI to build the application using Webnative's [Device Linking flow](https://github.com/webnative-examples/webnative-app-template)
+- **--use-webcrypto** - Explicitly tell the CLI to build the application using Webnative's [Device Linking flow](https://github.com/webnative-examples/webnative-app-template)
 - **--use-npm** - Explicitly tell the CLI to bootstrap the app using `npm`. This is the default option.
 - **--use-pnpm** - Explicitly tell the CLI to bootstrap the app using `pnpm`. To bootstrap using pnpm we recommend running `pnpm create webnative-app`
 - **--use-yarn** - Explicitly tell the CLI to bootstrap the app using `yarn`. To bootstrap using pnpm we recommend running `yarn create webnative-app`

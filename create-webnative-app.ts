@@ -41,7 +41,7 @@ type ReposType = {
 
 const WEBNATIVE_EXAMPLES_URL = 'https://github.com/webnative-examples/'
 const Repos: ReposType = {
-  deviceLinking: {
+  webcrypto: {
     react: `${WEBNATIVE_EXAMPLES_URL}webnative-app-template-react`,
     sveltekit: `${WEBNATIVE_EXAMPLES_URL}webnative-app-template`,
   },
