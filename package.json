@@ -1,24 +1,25 @@
 {
-  "name": "create-webnative-app",
+  "name": "create-odd-app",
   "version": "0.0.12",
   "keywords": [
     "fission",
+    "oddsdk",
+    "odd",
     "react",
     "sveltekit",
     "svelte",
-    "webnative",
     "wnfs"
   ],
-  "description": "Create Webnative apps in either React or SvelteKit with a single command.",
+  "description": "Create ODD apps in either React or SvelteKit with a single command.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/webnative-examples/create-webnative-app",
+    "url": "https://github.com/oddsdk/create-odd-app",
     "directory": "./"
   },
   "author": "Fission Team <support@fission.codes>",
   "license": "MIT",
   "bin": {
-    "create-webnative-app": "./dist/index.js"
+    "create-odd-app": "./dist/index.js"
   },
   "files": [
     "dist"

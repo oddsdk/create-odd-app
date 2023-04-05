@@ -38,7 +38,7 @@ export const tryGitInit = (root: string): boolean => {
     execSync("git checkout -b main", { stdio: "ignore" })
 
     execSync("git add -A", { stdio: "ignore" })
-    execSync('git commit -m "Initial commit from Create Webnative App"', {
+    execSync('git commit -m "Initial commit from Create ODD App"', {
       stdio: "ignore",
     })
     return true
@@ -71,11 +71,11 @@ export const getRepoInfo = async (url: URL): Promise<RepoInfo | undefined> => {
   const filePath = file.join('/')
 
   if (
-    // Support repos whose entire purpose is to be a Webnative example, e.g.
-    // https://github.com/:username/:my-cool-webnative-example-repo-name.
+    // Support repos whose entire purpose is to be a ODD example, e.g.
+    // https://github.com/:username/:my-cool-odd-example-repo-name.
     t === undefined ||
     // Support GitHub URL that ends with a trailing slash, e.g.
-    // https://github.com/:username/:my-cool-webnative-example-repo-name/
+    // https://github.com/:username/:my-cool-odd-example-repo-name/
     // In this case "t" will be an empty string while the next part "_branch" will be undefined
     (t === '' && _branch === undefined)
   ) {

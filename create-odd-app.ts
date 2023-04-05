@@ -39,15 +39,15 @@ type ReposType = {
   }
 }
 
-const WEBNATIVE_EXAMPLES_URL = 'https://github.com/webnative-examples/'
+const ODD_EXAMPLES_URL = 'https://github.com/oddsdk/'
 const Repos: ReposType = {
   webcrypto: {
-    react: `${WEBNATIVE_EXAMPLES_URL}webnative-app-template-react`,
-    sveltekit: `${WEBNATIVE_EXAMPLES_URL}webnative-app-template`,
+    react: `${ODD_EXAMPLES_URL}odd-app-template-react`,
+    sveltekit: `${ODD_EXAMPLES_URL}odd-app-template`,
   },
   walletauth: {
-    react: `${WEBNATIVE_EXAMPLES_URL}walletauth-react`,
-    sveltekit: `${WEBNATIVE_EXAMPLES_URL}walletauth`,
+    react: `${ODD_EXAMPLES_URL}walletauth-react`,
+    sveltekit: `${ODD_EXAMPLES_URL}walletauth`,
   },
 };
 
@@ -56,7 +56,7 @@ const Repos: ReposType = {
  *
  * @param Options
  */
-const createWebnativeApp = async ({
+const createODDApp = async ({
   appInfo,
   appPath,
   authFlow,
@@ -135,7 +135,7 @@ const createWebnativeApp = async ({
   const originalDirectory = process.cwd();
 
   console.log();
-  console.log(`Creating a new Webnative app in ${chalk.green(root)}.`);
+  console.log(`Creating a new ODD app in ${chalk.green(root)}.`);
   console.log();
 
   process.chdir(root);
@@ -253,4 +253,4 @@ const createWebnativeApp = async ({
   console.log();
 };
 
-export default createWebnativeApp
+export default createODDApp
