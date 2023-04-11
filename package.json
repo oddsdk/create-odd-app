@@ -1,5 +1,5 @@
 {
-  "name": "create-odd-app",
+  "name": "@oddjs/create-odd-app",
   "version": "0.0.12",
   "keywords": [
     "fission",
