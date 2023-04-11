@@ -44,7 +44,7 @@ pnpm create odd-app my-odd-app
 
 ## 🤔 What's The ODD SDK?
 
-[The ODD SDK](https://github.com/fission-codes/odd) empowers developers to build fully distributed web applications without needing a complex back-end. The SDK provides:
+[The ODD SDK](https://github.com/oddsdk/ts-odd) empowers developers to build fully distributed web applications without needing a complex back-end. The SDK provides:
 
 - user accounts (via [the browser's Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)),
 - authorization (using [UCAN](https://ucan.xyz))
