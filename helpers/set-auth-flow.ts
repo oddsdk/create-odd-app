@@ -29,20 +29,20 @@ const setAuthFlow = async (program: CWA_Command): Promise<AuthFlow> => {
       const res = await prompts({
         type: 'select',
         name: 'authFlow',
-        message: 'Which Webnative auth flow would you like to use?',
+        message: 'Which ODD auth flow would you like to use?',
         choices: [
           {
             title: 'WebCrypto',
             // @ts-ignore-next-line
             description:
-              'Learn more here: https://github.com/webnative-examples/webnative-app-template',
+              'Learn more here: https://github.com/oddsdk/odd-app-template',
             value: 'webcrypto',
           },
           {
             title: 'WalletAuth',
             // @ts-ignore-next-line
             description:
-              'Learn more here: https://github.com/webnative-examples/walletauth',
+              'Learn more here: https://github.com/oddsdk/walletauth',
             value: 'walletauth',
           },
         ],

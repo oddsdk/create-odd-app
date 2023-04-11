@@ -4,7 +4,7 @@ import { Command, type Command as CommandType } from 'commander'
 import path from 'path'
 import checkForUpdate from 'update-check'
 
-import createWebnativeApp, { DownloadError } from './create-webnative-app'
+import createODDApp, { DownloadError } from './create-odd-app'
 import getPkgManager from './helpers/get-pkg-manager'
 import validateNpmName from './helpers/validate-pkg'
 import setAppInfo, { AppInfo } from './helpers/set-app-info'
@@ -28,8 +28,8 @@ export type CWA_Command = CommandType & {
 let projectPath: string = '';
 
 /**
- * Flow to be run when `create-webnative-app` is called. Can be called as:
- * `create-webnative-app` or `create-webnative-app <my-app-name>`
+ * Flow to be run when `create-odd-app` is called. Can be called as:
+ * `create-odd-app` or `create-odd-app <my-app-name>`
  * Args can also be passed in: --use-npm, --use-yarn, --use-pnpm,
  * --use-sveltekit, --use-react, --use-walletauth, --use-webcrypto
  */
@@ -75,13 +75,13 @@ const program: CWA_Command = new Command(packageJson.name)
   .option(
     '--use-walletauth',
     `
-  Explicitly tell the CLI to build the application using Webnative's WalletAuth flow
+  Explicitly tell the CLI to build the application using the ODD SDK's WalletAuth flow
 `,
   )
   .option(
     '--use-webcrypto',
     `
-  Explicitly tell the CLI to build the application using Webnative's WebCrypto Device Linking flow
+  Explicitly tell the CLI to build the application using the ODD SDK's WebCrypto Device Linking flow
 `,
   )
   .allowUnknownOption()
@@ -125,7 +125,7 @@ const run = async (): Promise<void> => {
     : getPkgManager()
 
   try {
-    await createWebnativeApp({
+    await createODDApp({
       appInfo,
       appPath: resolvedProjectPath,
       authFlow,
@@ -138,7 +138,7 @@ const run = async (): Promise<void> => {
       throw reason
     }
 
-    await createWebnativeApp({
+    await createODDApp({
       appInfo,
       appPath: resolvedProjectPath,
       authFlow: AuthFlow.WebCrypto,
@@ -157,13 +157,13 @@ const notifyUpdate = async (): Promise<void> => {
     if (res?.latest) {
       const pkgManager = getPkgManager()
       console.log(
-        chalk.yellow.bold('A new version of `create-webnative-app` is available!') +
+        chalk.yellow.bold('A new version of `create-odd-app` is available!') +
           '\n' +
           'You can update by running: ' +
           chalk.cyan(
             pkgManager === 'yarn'
-              ? 'yarn global add create-webnative-app'
-              : `${pkgManager} install --global create-webnative-app`
+              ? 'yarn global add create-odd-app'
+              : `${pkgManager} install --global create-odd-app`
           ) +
           '\n'
       )

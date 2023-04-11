@@ -14,18 +14,18 @@ export type AppInfo = {
 
 // Default values from WAT
 const APP_INFO_WAT = {
-  appName: 'Awesome Webnative App',
-  appDescription: 'This is another awesome Webnative app.',
-  appURL: 'https://webnative.netlify.app',
-  // appImageURL: `https://webnative.netlify.app/preview.png`,
+  appName: 'Awesome ODD App',
+  appDescription: 'This is another awesome ODD app.',
+  appURL: 'https://odd.netlify.app',
+  // appImageURL: `https://odd.netlify.app/preview.png`,
 }
 
 // WalletAuth has slightly different default values
 const APP_INFO_WALLET_AUTH = {
   ...APP_INFO_WAT,
-  appName: 'Awesome Webnative WalletAuth App',
-  appURL: 'https://webnative-walletauth.netlify.app',
-  // appImageURL: `https://webnative-walletauth.netlify.app/preview.png`,
+  appName: 'Awesome ODD WalletAuth App',
+  appURL: 'https://odd-walletauth.netlify.app',
+  // appImageURL: `https://odd-walletauth.netlify.app/preview.png`,
 }
 
 /**
@@ -110,7 +110,7 @@ export const writeAppInfo = async ({
       authFlow === AuthFlow.WalletAuth ? { ...APP_INFO_WALLET_AUTH } : { ...APP_INFO_WAT }
 
     if (framework === Framework.React) {
-      defaultAppInfo.appURL = authFlow === AuthFlow.WalletAuth ? 'https://webnative-walletauth-react.netlify.app' : 'https://webnative-react.netlify.app'
+      defaultAppInfo.appURL = authFlow === AuthFlow.WalletAuth ? 'https://odd-walletauth-react.netlify.app' : 'https://odd-react.netlify.app'
     }
 
     // Replace appName

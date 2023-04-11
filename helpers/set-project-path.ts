@@ -20,7 +20,7 @@ const setProjectPath = async (
         type: 'text',
         name: 'path',
         message: 'What is your project named?',
-        initial: 'my-webnative-app',
+        initial: 'my-odd-app',
         validate: (name) => {
           const validation = validateNpmName(path.basename(path.resolve(name)))
           if (validation.valid) {
@@ -43,7 +43,7 @@ const setProjectPath = async (
           '<project-directory>'
         )}\n` +
         'For example:\n' +
-        `  ${chalk.cyan(program.name())} ${chalk.green('my-webnative-app')}\n\n` +
+        `  ${chalk.cyan(program.name())} ${chalk.green('my-odd-app')}\n\n` +
         `Run ${chalk.cyan(`${program.name()} --help`)} to see all options.`
     )
     process.exit(1)
