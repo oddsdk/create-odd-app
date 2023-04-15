@@ -13,11 +13,7 @@ https://user-images.githubusercontent.com/1179291/195956380-8c1442fa-75d9-4167-8
 You can use the following commands via your package manager of choice to invoke `create-odd-app`
 
 ```bash
-npx create-odd-app
-# or
-yarn create odd-app
-# or
-pnpm create odd-app
+npx @oddjs/create-odd-app
 ```
 
 ### Options
@@ -25,11 +21,7 @@ pnpm create odd-app
 You can invoke `create-odd-app` directly with an app name or you can wait to be prompted to set one:
 
 ```bash
-npx create-odd-app my-odd-app
-# or
-yarn create odd-app my-odd-app
-# or
-pnpm create odd-app my-odd-app
+npx @oddjs/create-odd-app my-odd-app
 ```
 
 `create-odd-app` also comes with the following options:
