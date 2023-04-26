@@ -162,8 +162,8 @@ const notifyUpdate = async (): Promise<void> => {
           'You can update by running: ' +
           chalk.cyan(
             pkgManager === 'yarn'
-              ? 'yarn global add create-odd-app'
-              : `${pkgManager} install --global create-odd-app`
+              ? 'yarn global add @oddjs/create-odd-app'
+              : `${pkgManager} install --global @oddjs/create-odd-app`
           ) +
           '\n'
       )
